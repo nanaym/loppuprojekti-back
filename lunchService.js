@@ -30,4 +30,20 @@ const getPerson = (id, cb) => {
     })
 }
 
-module.exports = { getPeople, getPerson }
+const insertPost = (newperson, cb) => {
+    const { id, name, restaurant, time } = newperson;
+    pool.query('INSERT INTO lounas (id, name, restaurant, time) VALUES ($1, $2, $3, $4)', [id, name, restaurant, time], (err, results) => {
+        if (err) throw err;
+        console.dir(results);
+        cb(results.rowCount);
+    })
+}
+
+const deletePost = (id, cb) => {
+    pool.query('DELETE FROM lounas WHERE id=$1', [id], (err, results) => {
+        if (err) throw err;
+        console.dir(results);
+        cb(results.rowCount);
+    })
+}
+module.exports = { getPeople, getPerson, insertPost, deletePost }
