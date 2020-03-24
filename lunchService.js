@@ -46,4 +46,14 @@ const deletePost = (id, cb) => {
         cb(results.rowCount);
     })
 }
-module.exports = { getPeople, getPerson, insertPost, deletePost }
+
+const updatePost = (post, id, cb) => {
+    const { name, restaurant, time } = post;
+    pool.query('UPDATE lounas SET name=$1, restaurant=$2, time=$3 WHERE id=$4', [name, restaurant, time, id], (err, results) => {
+        if (err) throw err;
+        console.dir(results);
+        cb(results.rowCount);
+    })
+}
+
+module.exports = { getPeople, getPerson, insertPost, deletePost, updatePost }
