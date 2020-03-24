@@ -22,6 +22,14 @@ const getPeople = (cb) => {
     })
 }
 
+const getRestaurants = (cb) => {
+    pool.query('SELECT * from lounas ORDER BY restaurant, time ', (err, results) => {
+        if (err) throw err;
+        console.dir(results);
+        cb(results.rows);
+    })
+}
+
 const getPerson = (id, cb) => {
     pool.query('SELECT * FROM lounas WHERE id=$1', [id], (err, results) => {
         if (err) throw err;
@@ -56,4 +64,4 @@ const updatePost = (post, id, cb) => {
     })
 }
 
-module.exports = { getPeople, getPerson, insertPost, deletePost, updatePost }
+module.exports = { getPeople, getRestaurants, getPerson, insertPost, deletePost, updatePost }
