@@ -31,8 +31,8 @@ const getPerson = (id, cb) => {
 }
 
 const insertPost = (newperson, cb) => {
-    const { id, name, restaurant, time } = newperson;
-    pool.query('INSERT INTO lounas (id, name, restaurant, time) VALUES ($1, $2, $3, $4)', [id, name, restaurant, time], (err, results) => {
+    const { name, restaurant, time } = newperson;
+    pool.query('INSERT INTO lounas (name, restaurant, time) VALUES ($1, $2, $3)', [name, restaurant, time], (err, results) => {
         if (err) throw err;
         console.dir(results);
         cb(results.rowCount);
