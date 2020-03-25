@@ -1,18 +1,19 @@
+var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var createError = require('http-errors');
 var cors = require('cors');
-
-
-app.use(cors)
-
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var lunchRouter = require('./routes/person');
+var restaurantRouter = require('./routes/restaurant');
 
 var app = express();
+app.use(cors());
+
+app.use(cors());
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -22,6 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api/person', lunchRouter);
+app.use('/api/restaurants', restaurantRouter);
 
 app.use(function(err, req, res, next){
     next(createError(404));
