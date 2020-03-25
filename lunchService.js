@@ -7,8 +7,8 @@ const PASSWORD = process.env.PGPASSWORD;
 const conopts = {
     user: USER,
     password: PASSWORD,
-    host: 'localhost',
-    database: 'loppuprojekti',
+    host: 'ec2-54-247-79-178.eu-west-1.compute.amazonaws.com',
+    database: 'd62gu0m1thikgc',
     port: 5432
 };
 
