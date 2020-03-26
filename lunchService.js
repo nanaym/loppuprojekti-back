@@ -8,7 +8,7 @@ const client = new Client({
 client.connect();
 
 const getPeople = (cb) => {
-    client.query('SELECT * from lounas ORDER BY name ASC', (err, results) => {
+    client.query('SELECT * from lounas', (err, results) => {
         if (err) throw err;
         console.dir(results);
         cb(results.rows);
