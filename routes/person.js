@@ -42,6 +42,18 @@ router.delete('/:id', function(req, res, next){
   })
 })
 
+//tyhjennä tietokannan sisältö, kaikkien käyttäjien postaukset
+//DELETE /api/person
+router.delete('/', function(req, res, next){
+  lunchService.deleteAll(req.params.id, (rowCount)=>{
+    if(rowCount>0)
+    res.status(200).json({message:'Poisto onnistui!'});
+    else{
+      res.status(400).json({message:'Oho, kävi virhe!'});
+    }
+  })
+})
+
 //muokkaa käyttäjän postausta
 //  //PUT /api/person/1
 router.put('/:id', function(req, res, next){

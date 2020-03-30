@@ -49,6 +49,14 @@ const deletePost = (id, cb) => {
     })
 }
 
+const deleteAll = (cb) => {
+    client.query('DELETE * FROM lounas', (err, results) => {
+        if (err) throw err;
+        console.dir(results);
+        cb(results.rowCount);
+    })
+}
+
 const updatePost = (post, id, cb) => {
     const { name, restaurant, time } = post;
     client.query('UPDATE lounas SET name=$1, restaurant=$2, time=$3 WHERE id=$4', [name, restaurant, time, id], (err, results) => {
@@ -58,5 +66,5 @@ const updatePost = (post, id, cb) => {
     })
 }
 
-module.exports = { getPeople,  getPerson, insertPost, deletePost, updatePost }
+module.exports = { getPeople,  getPerson, insertPost, deletePost, deleteAll, updatePost }
 // getRestaurants,
