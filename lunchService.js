@@ -15,6 +15,7 @@ const getPeople = (cb) => {
     })
 }
 
+//tätä funktiota ei käytetä
 // const getRestaurants = (cb) => {
 //     client.query('SELECT * from lounas ORDER BY restaurant, time ', (err, results) => {
 //         if (err) throw err;
