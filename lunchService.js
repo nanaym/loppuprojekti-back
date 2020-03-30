@@ -57,6 +57,7 @@ const deleteAll = (cb) => {
     })
 }
 
+//tätä ei vielä frontissa käytössä
 const updatePost = (post, id, cb) => {
     const { name, restaurant, time } = post;
     client.query('UPDATE lounas SET name=$1, restaurant=$2, time=$3 WHERE id=$4', [name, restaurant, time, id], (err, results) => {
