@@ -15,13 +15,13 @@ const getPeople = (cb) => {
     })
 }
 
-const getRestaurants = (cb) => {
-    client.query('SELECT * from lounas ORDER BY restaurant, time ', (err, results) => {
-        if (err) throw err;
-        console.dir(results);
-        cb(results.rows);
-    })
-}
+// const getRestaurants = (cb) => {
+//     client.query('SELECT * from lounas ORDER BY restaurant, time ', (err, results) => {
+//         if (err) throw err;
+//         console.dir(results);
+//         cb(results.rows);
+//     })
+// }
 
 const getPerson = (id, cb) => {
     client.query('SELECT * FROM lounas WHERE id=$1', [id], (err, results) => {
