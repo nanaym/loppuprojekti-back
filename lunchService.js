@@ -57,4 +57,5 @@ const updatePost = (post, id, cb) => {
     })
 }
 
-module.exports = { getPeople, getRestaurants, getPerson, insertPost, deletePost, updatePost }
+module.exports = { getPeople,  getPerson, insertPost, deletePost, updatePost }
+// getRestaurants,
