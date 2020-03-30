@@ -50,7 +50,7 @@ const deletePost = (id, cb) => {
 }
 
 const deleteAll = (cb) => {
-    client.query('DELETE * FROM lounas', (err, results) => {
+    client.query('DELETE FROM lounas', (err, results) => {
         if (err) throw err;
         console.dir(results);
         cb(results.rowCount);
