@@ -15,6 +15,7 @@ const getPeople = (cb) => {
     })
 }
 
+// tätä funktiota ei käytetä
 const getRestaurants = (cb) => {
     client.query('SELECT * from lounas ORDER BY restaurant, time ', (err, results) => {
         if (err) throw err;
@@ -48,6 +49,15 @@ const deletePost = (id, cb) => {
     })
 }
 
+const deleteAll = (cb) => {
+    client.query('DELETE FROM lounas', (err, results) => {
+        if (err) throw err;
+        console.dir(results);
+        cb(results.rowCount);
+    })
+}
+
+//tätä ei vielä frontissa käytössä
 const updatePost = (post, id, cb) => {
     const { name, restaurant, time } = post;
     client.query('UPDATE lounas SET name=$1, restaurant=$2, time=$3 WHERE id=$4', [name, restaurant, time, id], (err, results) => {
@@ -57,4 +67,4 @@ const updatePost = (post, id, cb) => {
     })
 }
 
-module.exports = { getPeople, getRestaurants, getPerson, insertPost, deletePost, updatePost }
+module.exports = { getPeople, getRestaurants, getPerson, insertPost, deletePost, deleteAll, updatePost }
