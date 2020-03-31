@@ -15,14 +15,14 @@ const getPeople = (cb) => {
     })
 }
 
-//tätä funktiota ei käytetä
-// const getRestaurants = (cb) => {
-//     client.query('SELECT * from lounas ORDER BY restaurant, time ', (err, results) => {
-//         if (err) throw err;
-//         console.dir(results);
-//         cb(results.rows);
-//     })
-// }
+// tätä funktiota ei käytetä
+const getRestaurants = (cb) => {
+    client.query('SELECT * from lounas ORDER BY restaurant, time ', (err, results) => {
+        if (err) throw err;
+        console.dir(results);
+        cb(results.rows);
+    })
+}
 
 const getPerson = (id, cb) => {
     client.query('SELECT * FROM lounas WHERE id=$1', [id], (err, results) => {
@@ -67,5 +67,4 @@ const updatePost = (post, id, cb) => {
     })
 }
 
-module.exports = { getPeople,  getPerson, insertPost, deletePost, deleteAll, updatePost }
-// getRestaurants,
+module.exports = { getPeople, getRestaurants, getPerson, insertPost, deletePost, deleteAll, updatePost }
